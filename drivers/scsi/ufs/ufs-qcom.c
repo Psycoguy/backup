@@ -1771,6 +1771,8 @@ static void ufs_qcom_pm_qos_unvote_work(struct work_struct *work)
 	group->state = PM_QOS_UNVOTED;
 	ufs_spin_unlock_irqrestore(host->hba->host->host_lock, flags);
 
+pm_qos_update_request(&group->req, PM_QOS_DEFAULT_VALUE);
+
 }
 
 static ssize_t ufs_qcom_pm_qos_enable_show(struct device *dev,
